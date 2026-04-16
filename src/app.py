@@ -10,11 +10,11 @@ print("modelo cargado")
 
 # Generar opciones dinámicas desde dataset
 options = {
-    "job_title": sorted(df["job_title"].dropna().unique()),
-    "education_level": sorted(df["education_level"].dropna().unique()),
-    "industry": sorted(df["industry"].dropna().unique()),
-    "company_size": sorted(df["company_size"].dropna().unique()),
-    "location": sorted(df["location"].dropna().unique())
+    "job_title": sorted(df_small["job_title"].dropna().unique()),
+    "education_level": sorted(df_small["education_level"].dropna().unique()),
+    "industry": sorted(df_small["industry"].dropna().unique()),
+    "company_size": sorted(df_small["company_size"].dropna().unique()),
+    "location": sorted(df_small["location"].dropna().unique())
 }
 
 def preprocess_input(data):
