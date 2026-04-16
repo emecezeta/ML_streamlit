@@ -4,18 +4,18 @@ from joblib import load
 
 app = Flask(__name__)
 
-model =load(open("/workspaces/Appwebs/models/salary_predictor_model.sav","rb"))
+model =load(open("../models/salary_predictor_model.sav","rb")) 
 print("modelo cargado")
 
 
 # Generar opciones dinámicas desde dataset
-options = {
-    "job_title": sorted(df_small["job_title"].dropna().unique()),
-    "education_level": sorted(df_small["education_level"].dropna().unique()),
-    "industry": sorted(df_small["industry"].dropna().unique()),
-    "company_size": sorted(df_small["company_size"].dropna().unique()),
-    "location": sorted(df_small["location"].dropna().unique())
-}
+#options = {
+  #  "job_title": sorted(df["job_title"].dropna().unique()),
+   # "education_level": sorted(df["education_level"].dropna().unique()),
+    #"industry": sorted(df["industry"].dropna().unique()),
+    #"company_size": sorted(df["company_size"].dropna().unique()),
+    #"location": sorted(df["location"].dropna().unique())
+#}
 
 def preprocess_input(data):
     df_input = pd.DataFrame([data])
@@ -30,6 +30,7 @@ def preprocess_input(data):
         df_input = df_input[columns]
 
     return df_input
+
 
 @app.route("/", methods=["GET", "POST"])
 def index():
