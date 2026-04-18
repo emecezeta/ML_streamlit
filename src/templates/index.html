@@ -1,140 +1,107 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Predicción de Salarios</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f6f8;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    .container {
-      background: white;
-      padding: 25px;
-      border-radius: 10px;
-      width: 350px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-    h2 {
-      text-align: center;
-    }
-    label {
-      margin-top: 10px;
-      display: block;
-    }
-    input, select, button {
-      width: 100%;
-      padding: 8px;
-      margin-top: 5px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-    }
-    button {
-      background: #007BFF;
-      color: white;
-      border: none;
-      margin-top: 15px;
-      cursor: pointer;
-    }
-    button:hover {
-      background: #0056b3;
-    }
-    #result {
-      margin-top: 15px;
-      font-weight: bold;
-      text-align: center;
-    }
-  </style>
+    <title>Predicción de Salarios</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        select, input[type="submit"] {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .prediction {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
 </head>
 <body>
-
-<div class="container">
-  <h2>Predicción de Salario</h2>
-
-  <form id="salaryForm">
-    <label>Job Title</label>
-    <input type="text" id="job_title" required>
-
-    <label>Años de Experiencia</label>
-    <input type="number" id="experience_years" required>
-
-    <label>Educación</label>
-    <select id="education_level">
-      <option value="High School">High School</option>
-      <option value="Bachelor">Bachelor</option>
-      <option value="Master">Master</option>
-      <option value="PhD">PhD</option>
-    </select>
-
-    <label>Cantidad de Skills</label>
-    <input type="number" id="skills_count">
-
-    <label>Industria</label>
-    <input type="text" id="industry">
-
-    <label>Tamaño Empresa</label>
-    <select id="company_size">
-      <option value="Small">Small</option>
-      <option value="Medium">Medium</option>
-      <option value="Large">Large</option>
-    </select>
-
-    <label>Ubicación</label>
-    <input type="text" id="location">
-
-    <label>Trabajo Remoto</label>
-    <select id="remote_work">
-      <option value="0">No</option>
-      <option value="1">Sí</option>
-    </select>
-
-    <label>Certificaciones</label>
-    <input type="number" id="certifications">
-
-    <button type="submit">Predecir</button>
-  </form>
-
-  <div id="result"></div>
-</div>
-
-<script>
-document.getElementById("salaryForm").addEventListener("submit", async function(e) {
-  e.preventDefault();
-
-  const data = {
-    job_title: document.getElementById("job_title").value,
-    experience_years: parseInt(document.getElementById("experience_years").value),
-    education_level: document.getElementById("education_level").value,
-    skills_count: parseInt(document.getElementById("skills_count").value),
-    industry: document.getElementById("industry").value,
-    company_size: document.getElementById("company_size").value,
-    location: document.getElementById("location").value,
-    remote_work: parseInt(document.getElementById("remote_work").value),
-    certifications: parseInt(document.getElementById("certifications").value)
-  };
-
-  try {
-    const response = await fetch("http://localhost:5000/predict", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
-    });
-
-    const result = await response.json();
-    document.getElementById("result").innerText = "Salario estimado: $" + result.prediction;
-
-  } catch (error) {
-    document.getElementById("result").innerText = "Error al predecir";
-    console.error(error);
-  }
-});
-</script>
-
+    <div class="container">
+        <h2>Predicción de Salarios</h2>
+        
+        <form action="/" method="post">
+           <label for="trabajo">Trabajo:</label>
+           <select name="val1" id="trabajo" required>
+               <option value="">Selecciona un trabajo</option>
+               <option value="0">AI Engineer</option>
+               <option value="5">Data Analyst</option>
+               <option value="8">Frontend Developer</option>
+               <option value="2">Business Analyst</option>
+               <option value="10">Product Manager</option>
+               <option value="1">Backend Developer</option>
+               <option value="9">Machine Learning Engineer</option>
+               <option value="7">DevOps Engineer</option>
+               <option value="11">Software Engineer</option>
+               <option value="4">Cybersecurity Analyst</option>
+               <option value="6">Data Scientist</option>
+               <option value="3">Cloud Engineer</option>
+           </select><br><br>
+           
+           <label for="experiencia">Años de experiencia:</label>
+           <select name="val2" id="experiencia" required>
+               <option value="">Selecciona años de experiencia</option>
+               {% for i in range(0, 21) %}
+                   <option value="{{ i }}">{{ i }}</option>
+               {% endfor %}
+           </select><br><br>
+           
+           <label for="educacion">Educación:</label>
+           <select name="val3" id="educacion" required>
+               <option value="">Selecciona nivel de educación</option>
+               <option value="2">High School</option>
+               <option value="1">Diploma</option>
+               <option value="0">Bachelor</option>
+               <option value="3">Master</option>
+               <option value="4">PhD</option>
+           </select><br><br>
+           
+           <input type="submit" value="Predecir Salario">
+        </form>
+        
+        {% if prediction %}
+            <div class="prediction">
+                <h3>Predicción: {{ prediction }}</h3>
+            </div>
+        {% endif %}
+    </div>
 </body>
 </html>
+
