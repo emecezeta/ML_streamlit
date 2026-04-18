@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template
 from pickle import load
 import os   
-
+import joblib
 app = Flask(__name__)
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
