@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Data Science Project Boilerplate
 
 This boilerplate is designed to kickstart data science projects by providing a basic setup for database connections, data processing, and machine learning model development. It includes a structured folder organization for your datasets and a set of pre-defined Python packages necessary for most data science tasks.
@@ -110,3 +111,6 @@ To process data, you can modify the app.py script to include your data processin
 This template was built as part of the [Data Science and Machine Learning Bootcamp](https://4geeksacademy.com/us/coding-bootcamps/datascience-machine-learning) by 4Geeks Academy by [Alejandro Sanchez](https://twitter.com/alesanchezr) and many other contributors. Learn more about [4Geeks Academy BootCamp programs](https://4geeksacademy.com/us/programs) here.
 
 Other templates and resources like this can be found on the school's GitHub page.
+=======
+# ML_streamlit
+>>>>>>> e4341c69e5f5f85d97b7fc2754eb34c587882d26
